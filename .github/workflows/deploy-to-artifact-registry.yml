@@ -9,12 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - name: checkout my branch
+      uses: actions/checkout@v4
+    - name: setup python  
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-      env:
-        CENTRAL_INFRA_JSON: ${{ secrets.CENTRAL_INFRA_JSON}} 
+    - name: create-json
+      id: create-json
+      uses: jsdaniell/create-json@v1.2.3
+      with:
+        name: "key.json"
+        json: ${{ secrets.CENTRAL_INFRA_JSON}}
     - name: install to GCP AR
       run: |
         echo install Twine
@@ -23,7 +29,6 @@ jobs:
         pip install --upgrade pip build
         echo install Google Keyring
         pip install keyrings.google-artifactregistry-auth
-        echo "$CENTRAL_INFRA_JSON" > key.json
         export GOOGLE_APPLICATION_CREDENTIALS=key.json
         python -m build --sdist --wheel --outdir dist/
         python -m twine upload --repository-url https://us-central1-python.pkg.dev/wade-prefect/private-packages dist/*
