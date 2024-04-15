@@ -1,5 +1,7 @@
 from setuptools import setup
 
+import versioneer
+
 with open("requirements.txt") as install_requires_file:
     install_requires = install_requires_file.read().strip().split("\n")
 
@@ -20,5 +22,6 @@ setup(
     python_requires=">=3.10",
     install_requires=install_requires,
     packages=["seatgeek_client"],
-    version="0.0.1",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
 )
