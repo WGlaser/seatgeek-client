@@ -1,0 +1,19 @@
+name: deploy-to-artifact-registry
+run-name: ${{github.repository}} deployed to GCP Artifact-Registry
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' 
+    - name: install to GCP AR
+    - run: |
+      echo Install Twine
+      pip install twine
+      echo install Google Keyrin
+      pip install keyrings.google-artifactregistry-auth
