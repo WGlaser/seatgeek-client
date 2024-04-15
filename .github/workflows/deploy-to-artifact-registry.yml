@@ -8,6 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Get env variable
+      env:
+        CENTRAL_INFRA_JSON: ${{ secrets.CENTRAL_INFRA_JSON}}
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
@@ -18,3 +21,7 @@ jobs:
         pip install twine
         echo install Google Keyrin
         pip install keyrings.google-artifactregistry-auth
+        echo "$CENTRAL_INFRA_SA_JSON" > key.json
+        export GOOGLE_APPLICATION_CREDENTIALS=key.json
+        python -m build --sdist --wheel --outdir dist/
+        python -m twine upload --repository-url https://us-central1-python.pkg.dev/wade-prefect/private-packages dist/*
