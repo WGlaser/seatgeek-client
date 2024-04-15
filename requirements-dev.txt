@@ -1,0 +1,10 @@
+black
+isort
+flake8
+pre-commit
+interrogate
+prefect-docker
+mkdocs
+mkdocs-gen-files
+mkdocs-material
+mkdocstrings[python]
