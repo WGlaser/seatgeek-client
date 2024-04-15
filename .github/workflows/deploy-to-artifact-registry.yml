@@ -18,7 +18,9 @@ jobs:
       run: |
         echo install Twine
         pip install twine
-        echo install Google Keyrin
+        echo install build
+        pip install --upgrade pip build
+        echo install Google Keyring
         pip install keyrings.google-artifactregistry-auth
         echo "$CENTRAL_INFRA_SA_JSON" > key.json
         export GOOGLE_APPLICATION_CREDENTIALS=key.json
