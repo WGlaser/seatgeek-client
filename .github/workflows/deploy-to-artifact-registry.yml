@@ -12,7 +12,7 @@ jobs:
       with:
         python-version: '3.11' 
     - name: install to GCP AR
-    - run: |
+      run: |
         echo install Twine
         pip install twine
         echo install Google Keyrin
