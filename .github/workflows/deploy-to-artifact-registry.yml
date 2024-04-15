@@ -8,13 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Get env variable
-      env:
-        CENTRAL_INFRA_JSON: ${{ secrets.CENTRAL_INFRA_JSON}}
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.11' 
+        python-version: '3.11'
+      env:
+        CENTRAL_INFRA_JSON: ${{ secrets.CENTRAL_INFRA_JSON}} 
     - name: install to GCP AR
       run: |
         echo install Twine
