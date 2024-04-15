@@ -23,7 +23,7 @@ jobs:
         pip install --upgrade pip build
         echo install Google Keyring
         pip install keyrings.google-artifactregistry-auth
-        echo "$CENTRAL_INFRA_SA_JSON" > key.json
+        echo "$CENTRAL_INFRA_JSON" > key.json
         export GOOGLE_APPLICATION_CREDENTIALS=key.json
         python -m build --sdist --wheel --outdir dist/
         python -m twine upload --repository-url https://us-central1-python.pkg.dev/wade-prefect/private-packages dist/*
