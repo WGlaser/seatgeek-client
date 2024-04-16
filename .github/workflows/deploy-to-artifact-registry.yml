@@ -27,4 +27,4 @@ jobs:
         pip install keyrings.google-artifactregistry-auth
         export GOOGLE_APPLICATION_CREDENTIALS=key.json
         python -m build --sdist --wheel --outdir dist/
-        python -m twine upload --verbose --repository-url https://us-central1-python.pkg.dev/wade-prefect/private-packages dist/*
+        python -m twine upload --verbose --repository-url ${{vars.ARTIFACT_REGISTRY_REPO_URL}} dist/*
