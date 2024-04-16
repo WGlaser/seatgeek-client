@@ -1,10 +1,6 @@
 name: deploy-to-artifact-registry
 run-name: ${{github.repository}} deployed to GCP Artifact-Registry
-on:
-  push:
-    branches:
-      - main
-      - 1-basic-client
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
