@@ -57,6 +57,7 @@ class SeatGeek:
         datetime: dict[str, str] | None = None,
         query: str | None = None,
         taxonomies: List[dict[int, str, int]] | None = None,
+        page: int | None = None,
     ) -> dict:
         """The performers argument is used to scope the result set to specific
           performers. The performers argument may be used several times
@@ -93,6 +94,8 @@ class SeatGeek:
             query (str, optional):
 
             taxonomies (List[dict[int,str,int]], optional):
+
+            page: (int, optional): for paginated responses
         Returns:
             dict: _description_
         """
@@ -143,9 +146,11 @@ class SeatGeek:
                 else:
                     params.setdefault("datetime_local", []).append(data["date"])
 
-        print(params)
+        if page:
+            params["page"] = page
+
         resp = self.session.get(f"{self.BASE_API_URL}/events", params=params)
-        print(resp.url)
+
         return resp.json()
 
     def get_performers(
