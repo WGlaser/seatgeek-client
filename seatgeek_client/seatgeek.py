@@ -1,9 +1,6 @@
 """
 A simple Seatgeek Python Client to retrieve ticket info
 """
-
-from typing import List
-
 import requests
 
 
@@ -49,14 +46,14 @@ class SeatGeek:
 
     def get_events(
         self,
-        performer_by_slug: List[dict[str, str]] | None = None,
-        performer_by_id: List[dict[int, str]] | None = None,
+        performer_by_slug: list[dict[str, str]] | None = None,
+        performer_by_id: list[dict[int, str]] | None = None,
         multiple_performers_or: bool | None = None,
-        venues: List[dict[str, str, int]] | None = None,
+        venues: list[dict[str, str, int]] | None = None,
         multiple_venues_or: bool | None = None,
         datetime: dict[str, str] | None = None,
         query: str | None = None,
-        taxonomies: List[dict[int, str, int]] | None = None,
+        taxonomies: list[dict[int, str, int]] | None = None,
         page: int | None = None,
     ) -> dict:
         """The performers argument is used to scope the result set to specific
