@@ -8,3 +8,4 @@ mkdocs
 mkdocs-gen-files
 mkdocs-material
 mkdocstrings[python]
+versioneer
