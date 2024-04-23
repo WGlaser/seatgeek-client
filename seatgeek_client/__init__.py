@@ -1,5 +1,5 @@
 # flake8: noqa
-
+from seatgeek_client import SeatGeek
 
 from . import _version
 
